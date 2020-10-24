@@ -1,7 +1,7 @@
 package com.fusionkoding.bruskibeerservice.domain;
 
 import java.math.BigDecimal;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 import javax.persistence.Column;
