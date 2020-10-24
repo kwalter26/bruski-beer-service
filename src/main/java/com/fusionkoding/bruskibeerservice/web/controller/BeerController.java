@@ -1,11 +1,12 @@
 package com.fusionkoding.bruskibeerservice.web.controller;
 
+import java.net.URI;
 import java.util.UUID;
 
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
-import com.fusionkoding.bruskibeerservice.web.model.BeerPagedListDto;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,14 +28,21 @@ public class BeerController {
 
     @PostMapping
     public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto) {
-
+        BeerDto newBeer = BeerDto.builder().id(UUID.randomUUID()).build();
         // TODO: implement save beer
-        return ResponseEntity.ok(BeerDto.builder().build());
+        return ResponseEntity.created(URI.create("/api/v1/beer/" + newBeer.getId().toString()))
+                .body(BeerDto.builder().build());
     }
 
     @PutMapping("/{beerId}")
     public ResponseEntity updateBeerById(@PathVariable UUID beerId, @RequestBody BeerDto beerDto) {
         // TODO: implement update beer
-        return ResponseEntity.ok(BeerDto.builder().build());
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{beerId}")
+    public ResponseEntity deleteBeerById(@PathVariable UUID beerId) {
+        // TODO: implement update beer
+        return ResponseEntity.noContent().build();
     }
 }
