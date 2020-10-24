@@ -1,4 +1,4 @@
-package com.fusionkoding.bruskibeerservice.web.repositories;
+package com.fusionkoding.bruskibeerservice.repositories;
 
 import java.util.UUID;
 
