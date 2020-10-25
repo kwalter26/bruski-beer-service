@@ -3,9 +3,12 @@ package com.fusionkoding.bruskibeerservice.web.controller;
 import java.net.URI;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +30,7 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto) {
+    public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
         BeerDto newBeer = BeerDto.builder().id(UUID.randomUUID()).build();
         // TODO: implement save beer
         return ResponseEntity.created(URI.create("/api/v1/beer/" + newBeer.getId().toString()))
@@ -35,7 +38,7 @@ public class BeerController {
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable UUID beerId, @RequestBody BeerDto beerDto) {
+    public ResponseEntity updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
         // TODO: implement update beer
         return ResponseEntity.noContent().build();
     }
