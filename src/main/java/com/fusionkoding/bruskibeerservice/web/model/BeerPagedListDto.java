@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 
 public class BeerPagedListDto extends PageImpl<BeerDto> {
 
+    private static final long serialVersionUID = -7259726973854676554L;
+
     public BeerPagedListDto(List<BeerDto> content, Pageable pageable, long total) {
         super(content, pageable, total);
         // TODO Auto-generated constructor stub

@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class MvcExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<List> validationErrorHandler(ConstraintViolationException ex) {
+    public ResponseEntity<List<String>> validationErrorHandler(ConstraintViolationException ex) {
         List<String> errorList = new ArrayList<>(ex.getConstraintViolations().size());
         ex.getConstraintViolations().forEach(error -> errorList.add(error.toString()));
         return ResponseEntity.badRequest().body(errorList);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List> validationErrorHandler(MethodArgumentNotValidException ex) {
+    public ResponseEntity<List<String>> validationErrorHandler(MethodArgumentNotValidException ex) {
         List<String> errorList = new ArrayList<>();
         for (final FieldError error : ex.getBindingResult().getFieldErrors()) {
             errorList.add(error.getField() + ": " + error.getDefaultMessage());

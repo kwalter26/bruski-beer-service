@@ -30,7 +30,7 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
+    public ResponseEntity<Object> saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
         BeerDto newBeer = BeerDto.builder().id(UUID.randomUUID()).build();
         // TODO: implement save beer
         return ResponseEntity.created(URI.create("/api/v1/beer/" + newBeer.getId().toString()))
@@ -38,13 +38,13 @@ public class BeerController {
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
+    public ResponseEntity<Object> updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
         // TODO: implement update beer
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{beerId}")
-    public ResponseEntity deleteBeerById(@PathVariable UUID beerId) {
+    public ResponseEntity<Object> deleteBeerById(@PathVariable UUID beerId) {
         // TODO: implement update beer
         return ResponseEntity.noContent().build();
     }
