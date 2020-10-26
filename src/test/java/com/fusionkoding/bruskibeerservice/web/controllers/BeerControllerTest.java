@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fusionkoding.bruskibeerservice.web.controller.BeerController;
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
