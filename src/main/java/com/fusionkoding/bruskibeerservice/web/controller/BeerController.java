@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import com.fusionkoding.bruskibeerservice.services.BeerService;
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
 
 import org.springframework.http.ResponseEntity;
@@ -18,34 +19,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/beer")
 @RestController
 public class BeerController {
 
+    private final BeerService beerService;
+
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable UUID beerId) {
-
-        // TODO: implement get beer
-        return ResponseEntity.ok(BeerDto.builder().build());
+        return ResponseEntity.ok(beerService.getById(beerId));
     }
 
     @PostMapping
     public ResponseEntity<Object> saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
-        BeerDto newBeer = BeerDto.builder().id(UUID.randomUUID()).build();
-        // TODO: implement save beer
+        BeerDto newBeer = beerService.saveNewBeer(beerDto);
         return ResponseEntity.created(URI.create("/api/v1/beer/" + newBeer.getId().toString()))
                 .body(BeerDto.builder().build());
     }
 
     @PutMapping("/{beerId}")
     public ResponseEntity<Object> updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
-        // TODO: implement update beer
+        beerService.updateBeer(beerId, beerDto);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{beerId}")
     public ResponseEntity<Object> deleteBeerById(@PathVariable UUID beerId) {
-        // TODO: implement update beer
         return ResponseEntity.noContent().build();
     }
 }
