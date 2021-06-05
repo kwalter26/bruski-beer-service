@@ -1,15 +1,13 @@
 package com.fusionkoding.bruskibeerservice.services;
 
-import java.util.UUID;
-
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
 import com.fusionkoding.bruskibeerservice.web.mappers.BeerMapper;
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service

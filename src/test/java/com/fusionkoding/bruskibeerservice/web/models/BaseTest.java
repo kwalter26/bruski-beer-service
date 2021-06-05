@@ -1,16 +1,15 @@
 package com.fusionkoding.bruskibeerservice.web.models;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
+import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
+import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
-import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
-import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BaseTest {
     BeerDto getDto() {

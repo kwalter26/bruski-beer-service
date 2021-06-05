@@ -1,44 +1,26 @@
 package com.fusionkoding.bruskibeerservice.web.controllers;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
-import static org.springframework.restdocs.snippet.Attributes.key;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.math.BigDecimal;
-import java.util.UUID;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
 import com.fusionkoding.bruskibeerservice.services.BeerService;
 import com.fusionkoding.bruskibeerservice.web.controller.BeerController;
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
 import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
-
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationExtension;
-import org.springframework.restdocs.constraints.ConstraintDescriptions;
-import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.util.StringUtils;
 
-@ExtendWith(RestDocumentationExtension.class)
-@AutoConfigureRestDocs
+import java.math.BigDecimal;
+import java.util.UUID;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @WebMvcTest(BeerController.class)
 public class BeerControllerTest {
 
@@ -56,18 +38,7 @@ public class BeerControllerTest {
         when(beerService.getById(any())).thenReturn(validSavedBeer());
 
         mockMvc.perform(get("/api/v1/beer/{beerId}", UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andDo(document("v1/beer-get",
-                        pathParameters(parameterWithName("beerId").description("UUID of desired beer to get.")),
-                        responseFields(fieldWithPath("id").description("Id of Beer"),
-                                fieldWithPath("version").description("Version number"),
-                                fieldWithPath("createdDate").description("Date Created"),
-                                fieldWithPath("lastModifiedDate").description("Date Updated"),
-                                fieldWithPath("beerName").description("Beer Name"),
-                                fieldWithPath("beerStyle").description("Beer Style"),
-                                fieldWithPath("upc").description("UPC of Beer"),
-                                fieldWithPath("price").description("Price"),
-                                fieldWithPath("quantityOnHand").description("Quantity On hand"))));
+                .andExpect(status().isOk());
     }
 
     @Test
@@ -75,61 +46,26 @@ public class BeerControllerTest {
         when(beerService.saveNewBeer(any())).thenReturn(validSavedBeer());
         String beerDtoJson = objectMapper.writeValueAsString(validBeer());
 
-        ConstrainedFields fields = new ConstrainedFields(BeerDto.class);
-
         mockMvc.perform(post("/api/v1/beer").contentType(MediaType.APPLICATION_JSON).content(beerDtoJson))
-                .andExpect(status().isCreated())
-                .andDo(document("v1/beer-new",
-                        requestFields(fields.withPath("id").ignored(), fields.withPath("version").ignored(),
-                                fields.withPath("createdDate").ignored(), fields.withPath("lastModifiedDate").ignored(),
-                                fields.withPath("beerName").description("Beer Name"),
-                                fields.withPath("beerStyle").description("Beer Style"),
-                                fields.withPath("upc").description("UPC of Beer"),
-                                fields.withPath("price").description("Price"),
-                                fields.withPath("quantityOnHand").description("Quantity On hand")),
-                        responseFields(fieldWithPath("id").description("Id of Beer"),
-                                fieldWithPath("version").description("Version number"),
-                                fieldWithPath("createdDate").description("Date Created"),
-                                fieldWithPath("lastModifiedDate").description("Date Updated"),
-                                fieldWithPath("beerName").description("Beer Name"),
-                                fieldWithPath("beerStyle").description("Beer Style"),
-                                fieldWithPath("upc").description("UPC of Beer"),
-                                fieldWithPath("price").description("Price"),
-                                fieldWithPath("quantityOnHand").description("Quantity On hand"))));
+                .andExpect(status().isCreated());
     }
 
     @Test
     void updateBeerById() throws Exception {
         when(beerService.updateBeer(any(), any())).thenReturn(validSavedBeer());
         String beerDtoJson = objectMapper.writeValueAsString(validBeer());
-        mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString()).contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID()).contentType(MediaType.APPLICATION_JSON)
                 .content(beerDtoJson)).andExpect(status().isNoContent());
     }
 
     private BeerDto validBeer() {
-        BeerDto beerDto = BeerDto.builder().beerName("Beer").beerStyle(BeerStyleEnum.IPA)
+        return BeerDto.builder().beerName("Beer").beerStyle(BeerStyleEnum.IPA)
                 .price(BigDecimal.valueOf(10.00)).upc(BeerLoader.BEER_1_UPC).build();
-        return beerDto;
     }
 
     private BeerDto validSavedBeer() {
-        BeerDto beerDto = BeerDto.builder().id(UUID.randomUUID()).beerName("Beer").beerStyle(BeerStyleEnum.IPA)
+        return BeerDto.builder().id(UUID.randomUUID()).beerName("Beer").beerStyle(BeerStyleEnum.IPA)
                 .price(BigDecimal.valueOf(10.00)).upc(BeerLoader.BEER_1_UPC).build();
-        return beerDto;
-    }
-
-    private static class ConstrainedFields {
-
-        private final ConstraintDescriptions constraintDescriptions;
-
-        ConstrainedFields(Class<?> input) {
-            this.constraintDescriptions = new ConstraintDescriptions(input);
-        }
-
-        private FieldDescriptor withPath(String path) {
-            return fieldWithPath(path).attributes(key("constraints").value(StringUtils
-                    .collectionToDelimitedString(this.constraintDescriptions.descriptionsForProperty(path), ". ")));
-        }
     }
 
 }

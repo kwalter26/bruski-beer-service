@@ -1,8 +1,8 @@
 package com.fusionkoding.bruskibeerservice.services;
 
-import java.util.UUID;
-
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
+
+import java.util.UUID;
 
 public interface BeerService {
 

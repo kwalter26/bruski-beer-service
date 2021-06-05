@@ -1,12 +1,11 @@
 package com.fusionkoding.bruskibeerservice.bootstrap;
 
-import java.math.BigDecimal;
-
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.math.BigDecimal;
 
 @Component
 public class BeerLoader implements CommandLineRunner {
@@ -24,7 +23,7 @@ public class BeerLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         loadBeerObjects();
     }
 
