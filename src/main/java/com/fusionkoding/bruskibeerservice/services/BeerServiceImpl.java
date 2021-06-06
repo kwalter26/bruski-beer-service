@@ -7,6 +7,8 @@ import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -15,6 +17,13 @@ public class BeerServiceImpl implements BeerService {
 
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
+
+    @Override
+    public List<BeerDto> getAllBeers() {
+        List<BeerDto> beers = new ArrayList<>();
+        beerRepository.findAll().iterator().forEachRemaining(beer -> beers.add(beerMapper.beerToBeerDto(beer)));
+        return beers;
+    }
 
     @Override
     public BeerDto getById(UUID beerId) {

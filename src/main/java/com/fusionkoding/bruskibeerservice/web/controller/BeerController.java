@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -17,6 +18,11 @@ import java.util.UUID;
 public class BeerController {
 
     private final BeerService beerService;
+
+    @GetMapping("/")
+    public ResponseEntity<List<BeerDto>> getAllBeers() {
+        return ResponseEntity.ok(beerService.getAllBeers());
+    }
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable UUID beerId) {

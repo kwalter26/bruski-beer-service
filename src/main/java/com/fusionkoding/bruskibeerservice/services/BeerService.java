@@ -3,6 +3,7 @@ package com.fusionkoding.bruskibeerservice.services;
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
 
 import java.util.UUID;
+import java.util.List;
 
 public interface BeerService {
 
@@ -12,4 +13,5 @@ public interface BeerService {
 
     BeerDto updateBeer(UUID beerId, BeerDto beerDto);
 
+    List<BeerDto> getAllBeers();
 }
