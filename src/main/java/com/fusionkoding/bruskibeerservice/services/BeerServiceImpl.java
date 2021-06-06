@@ -4,12 +4,16 @@ import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
 import com.fusionkoding.bruskibeerservice.web.mappers.BeerMapper;
 import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
+import com.fusionkoding.bruskibeerservice.web.model.BeerPagedList;
+import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.util.ObjectUtils;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -19,10 +23,30 @@ public class BeerServiceImpl implements BeerService {
     private final BeerMapper beerMapper;
 
     @Override
-    public List<BeerDto> getAllBeers() {
-        List<BeerDto> beers = new ArrayList<>();
-        beerRepository.findAll().iterator().forEachRemaining(beer -> beers.add(beerMapper.beerToBeerDto(beer)));
-        return beers;
+    public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest) {
+
+        Page<Beer> beerPage;
+
+        if (!ObjectUtils.isEmpty(beerName) && !ObjectUtils.isEmpty(beerStyle)) {
+            beerPage = beerRepository.findAllByBeerNameAndBeerStyle(beerName, beerStyle, pageRequest);
+        } else if (!ObjectUtils.isEmpty(beerName) && ObjectUtils.isEmpty(beerStyle)) {
+            beerPage = beerRepository.findAllByBeerName(beerName, pageRequest);
+        } else if (ObjectUtils.isEmpty(beerName) && !ObjectUtils.isEmpty(beerStyle)) {
+            beerPage = beerRepository.findAllByBeerStyle(beerStyle, pageRequest);
+        } else {
+            beerPage = beerRepository.findAll(pageRequest);
+        }
+
+        return new BeerPagedList(beerPage
+                .getContent()
+                .stream()
+                .map(beerMapper::beerToBeerDto)
+                .collect(Collectors.toList()),
+                PageRequest.of(
+                        beerPage.getPageable().getPageNumber(),
+                        beerPage.getPageable().getPageSize()),
+                        beerPage.getTotalElements()
+                        );
     }
 
     @Override
