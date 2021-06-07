@@ -25,7 +25,7 @@ public class BeerController {
 
     private final BeerService beerService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/beer", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BeerPagedList> listBeers(
             @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
             @RequestParam(value = "pageSize", required = false) Integer pageSize,
@@ -43,29 +43,38 @@ public class BeerController {
         return ResponseEntity.ok(beerPagedListDto);
     }
 
-    @GetMapping("/{beerId}")
+    @GetMapping("/beer/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(
             @PathVariable UUID beerId,
-            @RequestParam(value = "showBeerOnHand", required = false, defaultValue = "false") boolean showBeerOnHand
+            @RequestParam(value = "showInventoryOnHand", required = false, defaultValue = "false") boolean showBeerOnHand
 
     ) {
         return ResponseEntity.ok(beerService.getById(beerId, showBeerOnHand));
     }
 
-    @PostMapping
+    @GetMapping("/beerUpc/{upc}")
+    public ResponseEntity<BeerDto> getBeerByUpc(
+            @PathVariable String upc,
+            @RequestParam(value = "showInventoryOnHand", required = false, defaultValue = "false") boolean showBeerOnHand
+
+    ) {
+        return ResponseEntity.ok(beerService.getByUpc(upc, showBeerOnHand));
+    }
+
+    @PostMapping("/beer")
     public ResponseEntity<Object> saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
         BeerDto newBeer = beerService.saveNewBeer(beerDto);
         return ResponseEntity.created(URI.create("/api/v1/beer/" + newBeer.getId().toString()))
                 .body(BeerDto.builder().build());
     }
 
-    @PutMapping("/{beerId}")
+    @PutMapping("/beer/{beerId}")
     public ResponseEntity<Object> updateBeerById(@PathVariable UUID beerId, @RequestBody @Validated BeerDto beerDto) {
         beerService.updateBeer(beerId, beerDto);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{beerId}")
+    @DeleteMapping("/beer/{beerId}")
     public ResponseEntity<Object> deleteBeerById(@PathVariable UUID beerId) {
         return ResponseEntity.noContent().build();
     }
