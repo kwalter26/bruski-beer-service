@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.5.0'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id "jacoco"
     id "org.sonarqube" version "3.2.0"
 }
 
@@ -56,5 +57,11 @@ sonarqube {
         property "sonar.projectKey", "kwalter26_bruski-beer-service"
         property "sonar.organization", "fusionkoding"
         property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
     }
 }
