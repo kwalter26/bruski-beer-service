@@ -68,7 +68,7 @@ public class BeerServiceImpl implements BeerService {
         }
     }
 
-    @Cacheable(cacheNames = "beerCache",key = "#beerId",condition = "#showBeerOnHand == false")
+    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showBeerOnHand == false")
     @Override
     public BeerDto getById(UUID beerId, boolean showBeerOnHand) {
 
