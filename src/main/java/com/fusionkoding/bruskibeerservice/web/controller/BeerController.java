@@ -16,7 +16,7 @@ import java.net.URI;
 import java.util.UUID;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1")
 @RestController
 public class BeerController {
 
