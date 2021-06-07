@@ -31,13 +31,13 @@ public class BeerController {
             @RequestParam(value = "pageSize", required = false) Integer pageSize,
             @RequestParam(value = "beerName", required = false) String beerName,
             @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle,
-            @RequestParam(value = "showBeerOnHand", required = false, defaultValue = "false") boolean showBeerOnHand
+            @RequestParam(value = "showInventoryOnHand", required = false, defaultValue = "false") boolean showInventoryOnHand
     ) {
 
         if (pageNumber == null || pageNumber < 0) pageNumber = DEFAULT_PAGE_NUMBER;
         if (pageSize == null || pageSize < 0) pageSize = DEFAULT_PAGE_NUMBER;
 
-        BeerPagedList beerPagedListDto = beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize), showBeerOnHand);
+        BeerPagedList beerPagedListDto = beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize), showInventoryOnHand);
 
 
         return ResponseEntity.ok(beerPagedListDto);

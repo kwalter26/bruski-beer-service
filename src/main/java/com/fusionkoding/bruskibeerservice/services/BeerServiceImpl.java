@@ -7,6 +7,8 @@ import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
 import com.fusionkoding.bruskibeerservice.web.model.BeerPagedList;
 import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class BeerServiceImpl implements BeerService {
@@ -22,8 +25,11 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false")
     @Override
-    public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showBeerOnHand) {
+    public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest, boolean showInventoryOnHand) {
+
+        log.info("Getting list of beers");
 
         Page<Beer> beerPage;
 
@@ -37,7 +43,7 @@ public class BeerServiceImpl implements BeerService {
             beerPage = beerRepository.findAll(pageRequest);
         }
 
-        if (showBeerOnHand) {
+        if (showInventoryOnHand) {
             return new BeerPagedList(beerPage
                     .getContent()
                     .stream()
@@ -62,8 +68,12 @@ public class BeerServiceImpl implements BeerService {
         }
     }
 
+    @Cacheable(cacheNames = "beerCache",key = "#beerId",condition = "#showBeerOnHand == false")
     @Override
     public BeerDto getById(UUID beerId, boolean showBeerOnHand) {
+
+        log.info("Getting beer for id:" + beerId);
+
         if (showBeerOnHand) {
             return beerMapper.beerToBeerDtoWithInventory(beerRepository.findById(beerId).orElseThrow(NotFoundException::new));
         } else {
