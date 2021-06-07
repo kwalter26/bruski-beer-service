@@ -11,7 +11,7 @@ public abstract class BeerMapperDecorator implements BeerMapper {
     private BeerMapper beerMapper;
 
     @Autowired
-    public void setBeerInventoryService(BeerInventoryService beerInventoryService){
+    public void setBeerInventoryService(BeerInventoryService beerInventoryService) {
         this.beerInventoryService = beerInventoryService;
     }
 

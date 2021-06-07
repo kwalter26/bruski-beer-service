@@ -8,9 +8,9 @@ import com.fusionkoding.bruskibeerservice.web.model.BeerPagedList;
 import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.util.ObjectUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.util.UUID;
 import java.util.stream.Collectors;

@@ -3,7 +3,6 @@ package com.fusionkoding.bruskibeerservice.bootstrap;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
