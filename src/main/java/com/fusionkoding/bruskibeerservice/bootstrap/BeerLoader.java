@@ -2,6 +2,7 @@ package com.fusionkoding.bruskibeerservice.bootstrap;
 
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
+import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +18,7 @@ public class BeerLoader implements CommandLineRunner {
     public static final String BEER_2_UPC = "0631234300019";
     public static final String BEER_3_UPC = "0083783375213";
 
-    public static final String BEER_STYLE_1 = "Stout";
+    public static final String BEER_STYLE_1 = BeerStyleEnum.STOUT.name();
 
     private final BeerRepository beerRepository;
 
