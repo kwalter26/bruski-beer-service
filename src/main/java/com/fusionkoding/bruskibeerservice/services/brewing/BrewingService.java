@@ -1,4 +1,4 @@
-package com.fusionkoding.bruskibeerservice.services;
+package com.fusionkoding.bruskibeerservice.services.brewing;
 
 import com.fusionkoding.bruskibeerservice.config.JmsConfig;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
