@@ -34,15 +34,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.9'
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     implementation 'mysql:mysql-connector-java:8.0.24'
-
-    compileOnly 'com.fasterxml.jackson:jackson-bom:2.12.1'
-
-    // Bugfix
-    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-parameter-names', version: '2.12.3'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-
-
+    
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
