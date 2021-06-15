@@ -1,9 +1,9 @@
 package com.fusionkoding.bruskibeerservice.web.controller;
 
 import com.fusionkoding.bruskibeerservice.services.BeerService;
-import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
+import com.fusionkoding.brewing.model.BeerDto;
 import com.fusionkoding.bruskibeerservice.web.model.BeerPagedList;
-import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
+import com.fusionkoding.brewing.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;

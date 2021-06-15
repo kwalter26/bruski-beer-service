@@ -1,7 +1,9 @@
-package com.fusionkoding.bruskibeerservice.events;
+package com.fusionkoding.brewing.model;
 
-import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 

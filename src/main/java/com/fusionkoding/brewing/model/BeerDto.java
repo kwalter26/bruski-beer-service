@@ -1,4 +1,4 @@
-package com.fusionkoding.bruskibeerservice.web.model;
+package com.fusionkoding.brewing.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

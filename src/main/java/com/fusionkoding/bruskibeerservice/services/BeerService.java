@@ -1,8 +1,8 @@
 package com.fusionkoding.bruskibeerservice.services;
 
-import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
+import com.fusionkoding.brewing.model.BeerDto;
 import com.fusionkoding.bruskibeerservice.web.model.BeerPagedList;
-import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
+import com.fusionkoding.brewing.model.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.UUID;

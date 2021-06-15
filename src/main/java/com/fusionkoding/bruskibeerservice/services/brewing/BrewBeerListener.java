@@ -1,11 +1,12 @@
 package com.fusionkoding.bruskibeerservice.services.brewing;
 
+import com.fusionkoding.brewing.model.BrewBeerEvent;
+import com.fusionkoding.brewing.model.NewInventoryEvent;
 import com.fusionkoding.bruskibeerservice.config.JmsConfig;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
-import com.fusionkoding.bruskibeerservice.events.BrewBeerEvent;
-import com.fusionkoding.bruskibeerservice.events.NewInventoryEvent;
+
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
-import com.fusionkoding.bruskibeerservice.web.model.BeerDto;
+import com.fusionkoding.brewing.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;

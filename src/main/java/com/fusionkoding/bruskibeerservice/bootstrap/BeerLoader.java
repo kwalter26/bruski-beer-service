@@ -2,9 +2,8 @@ package com.fusionkoding.bruskibeerservice.bootstrap;
 
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
-import com.fusionkoding.bruskibeerservice.web.model.BeerStyleEnum;
+import com.fusionkoding.brewing.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
