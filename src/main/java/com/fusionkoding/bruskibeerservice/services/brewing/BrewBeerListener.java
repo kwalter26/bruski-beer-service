@@ -5,8 +5,8 @@ import com.fusionkoding.brewing.model.NewInventoryEvent;
 import com.fusionkoding.bruskibeerservice.config.JmsConfig;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 
-import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
 import com.fusionkoding.brewing.model.BeerDto;
+import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
