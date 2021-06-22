@@ -1,8 +1,8 @@
 package com.fusionkoding.bruskibeerservice.web.models;
 
-import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
 import com.fusionkoding.brewing.model.BeerDto;
 import com.fusionkoding.brewing.model.BeerStyleEnum;
+import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

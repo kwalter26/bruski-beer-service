@@ -7,6 +7,7 @@
 Spring Boot Microservice Example
 
 # Default Port Mappings - For Single Host
+
 | Service Name | Port | 
 | --------| -----|
 | Bruski Beer Service | 8080 |

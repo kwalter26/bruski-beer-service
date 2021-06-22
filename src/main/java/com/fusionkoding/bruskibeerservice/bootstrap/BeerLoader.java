@@ -1,8 +1,8 @@
 package com.fusionkoding.bruskibeerservice.bootstrap;
 
+import com.fusionkoding.brewing.model.BeerStyleEnum;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
-import com.fusionkoding.brewing.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -23,7 +23,7 @@ public class BeerLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if(beerRepository.count() == 0){
+        if (beerRepository.count() == 0) {
             loadBeerObjects();
         }
     }
@@ -31,32 +31,32 @@ public class BeerLoader implements CommandLineRunner {
     private void loadBeerObjects() {
 
 
-            beerRepository.save(Beer.builder()
-                    .beerName("Guiness")
-                    .beerStyle(BEER_STYLE_1)
-                    .quantityToBrew(200)
-                    .minOnHand(12)
-                    .upc(BEER_1_UPC)
-                    .price(new BigDecimal("12.95"))
-                    .build());
+        beerRepository.save(Beer.builder()
+                .beerName("Guiness")
+                .beerStyle(BEER_STYLE_1)
+                .quantityToBrew(200)
+                .minOnHand(12)
+                .upc(BEER_1_UPC)
+                .price(new BigDecimal("12.95"))
+                .build());
 
-            beerRepository.save(Beer.builder()
-                    .beerName("Dragon's Milk")
-                    .beerStyle(BEER_STYLE_1)
-                    .quantityToBrew(200)
-                    .minOnHand(12)
-                    .upc(BEER_2_UPC)
-                    .price(new BigDecimal("12.95"))
-                    .build());
+        beerRepository.save(Beer.builder()
+                .beerName("Dragon's Milk")
+                .beerStyle(BEER_STYLE_1)
+                .quantityToBrew(200)
+                .minOnHand(12)
+                .upc(BEER_2_UPC)
+                .price(new BigDecimal("12.95"))
+                .build());
 
-            beerRepository.save(Beer.builder()
-                    .beerName("Gooma")
-                    .beerStyle(BEER_STYLE_1)
-                    .quantityToBrew(200)
-                    .minOnHand(12)
-                    .upc(BEER_3_UPC)
-                    .price(new BigDecimal("11.95"))
-                    .build());
+        beerRepository.save(Beer.builder()
+                .beerName("Gooma")
+                .beerStyle(BEER_STYLE_1)
+                .quantityToBrew(200)
+                .minOnHand(12)
+                .upc(BEER_3_UPC)
+                .price(new BigDecimal("11.95"))
+                .build());
 
     }
 

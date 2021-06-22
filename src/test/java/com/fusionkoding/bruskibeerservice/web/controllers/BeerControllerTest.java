@@ -1,11 +1,11 @@
 package com.fusionkoding.bruskibeerservice.web.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fusionkoding.brewing.model.BeerDto;
+import com.fusionkoding.brewing.model.BeerStyleEnum;
 import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
 import com.fusionkoding.bruskibeerservice.services.BeerService;
 import com.fusionkoding.bruskibeerservice.web.controller.BeerController;
-import com.fusionkoding.brewing.model.BeerDto;
-import com.fusionkoding.brewing.model.BeerStyleEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
