@@ -1,5 +1,6 @@
-package com.fusionkoding.brewing.model;
+package com.fusionkoding.brewery.model.events;
 
+import com.fusionkoding.brewery.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

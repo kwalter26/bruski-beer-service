@@ -1,6 +1,6 @@
 package com.fusionkoding.bruskibeerservice.web.mappers;
 
-import com.fusionkoding.brewing.model.BeerDto;
+import com.fusionkoding.brewery.model.BeerDto;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;

@@ -1,6 +1,6 @@
 package com.fusionkoding.bruskibeerservice.repositories;
 
-import com.fusionkoding.brewing.model.BeerStyleEnum;
+import com.fusionkoding.brewery.model.BeerStyleEnum;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

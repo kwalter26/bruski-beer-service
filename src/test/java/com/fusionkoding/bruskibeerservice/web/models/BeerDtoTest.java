@@ -2,7 +2,7 @@ package com.fusionkoding.bruskibeerservice.web.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fusionkoding.brewing.model.BeerDto;
+import com.fusionkoding.brewery.model.BeerDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;

@@ -1,6 +1,6 @@
 package com.fusionkoding.bruskibeerservice.services.brewing;
 
-import com.fusionkoding.brewing.model.BrewBeerEvent;
+import com.fusionkoding.brewery.model.events.BrewBeerEvent;
 import com.fusionkoding.bruskibeerservice.config.JmsConfig;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;

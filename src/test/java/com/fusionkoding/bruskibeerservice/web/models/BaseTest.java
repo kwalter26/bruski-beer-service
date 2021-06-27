@@ -1,7 +1,7 @@
 package com.fusionkoding.bruskibeerservice.web.models;
 
-import com.fusionkoding.brewing.model.BeerDto;
-import com.fusionkoding.brewing.model.BeerStyleEnum;
+import com.fusionkoding.brewery.model.BeerDto;
+import com.fusionkoding.brewery.model.BeerStyleEnum;
 import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
 import org.junit.jupiter.api.Test;
 

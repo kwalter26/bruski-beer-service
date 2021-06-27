@@ -1,8 +1,8 @@
 package com.fusionkoding.bruskibeerservice.web.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fusionkoding.brewing.model.BeerDto;
-import com.fusionkoding.brewing.model.BeerStyleEnum;
+import com.fusionkoding.brewery.model.BeerDto;
+import com.fusionkoding.brewery.model.BeerStyleEnum;
 import com.fusionkoding.bruskibeerservice.bootstrap.BeerLoader;
 import com.fusionkoding.bruskibeerservice.services.BeerService;
 import com.fusionkoding.bruskibeerservice.web.controller.BeerController;

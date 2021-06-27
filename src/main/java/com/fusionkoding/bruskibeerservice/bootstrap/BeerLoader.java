@@ -1,6 +1,6 @@
 package com.fusionkoding.bruskibeerservice.bootstrap;
 
-import com.fusionkoding.brewing.model.BeerStyleEnum;
+import com.fusionkoding.brewery.model.BeerStyleEnum;
 import com.fusionkoding.bruskibeerservice.domain.Beer;
 import com.fusionkoding.bruskibeerservice.repositories.BeerRepository;
 import lombok.RequiredArgsConstructor;

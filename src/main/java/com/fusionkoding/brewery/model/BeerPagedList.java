@@ -1,9 +1,8 @@
-package com.fusionkoding.bruskibeerservice.web.model;
+package com.fusionkoding.brewery.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fusionkoding.brewing.model.BeerDto;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
