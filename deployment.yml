@@ -15,7 +15,7 @@ spec:
         app: bruski-beer-service
     spec:
       containers:
-        - name: bruski-beer-intentory-service
+        - name: bruski-beer-service
           image: kwalter26/bruski-beer-service
           ports:
             - containerPort: 8080
